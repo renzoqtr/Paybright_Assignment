@@ -10,7 +10,7 @@ class PayBrightPage(BasePage):
     PAYBRIGHT_SORT_BY_OPTIONS = (By.CSS_SELECTOR, "div.MuiPopover-paper >ul>li")
     PAYBRIGHT_SEARCH_FIELD = (By.NAME, "search")
     PAYBRIGHT_RESULT_CARDS = (By.CSS_SELECTOR, "div.styles__MerchantCardWrapper-sc-1m5ue4o-14")
-    PAYBRIGHT_RESULT_CARD = (By.XPATH, ".//a[contains(., 'Samsung')]")
+    PAYBRIGHT_RESULT_CARD = ".//a[contains(., 'brand')]"
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -32,8 +32,9 @@ class PayBrightPage(BasePage):
     def wait_for_any_result(self):
         self.wait.until(expected_conditions.presence_of_element_located(self.PAYBRIGHT_RESULT_CARDS))
 
-    def get_result_card(self):
-        return self.get_element(self.PAYBRIGHT_RESULT_CARD)
+    def get_result_card(self, brand):
+        locator = self.PAYBRIGHT_RESULT_CARD.replace("brand", brand)
+        return self.get_element((By.XPATH, locator))
 
     def get_result_cards(self):
         return self.get_elements(self.PAYBRIGHT_RESULT_CARDS)

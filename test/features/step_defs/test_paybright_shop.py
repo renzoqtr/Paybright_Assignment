@@ -61,6 +61,6 @@ def paybright_sort_by(paybright, option, brand):
 
 @then(parsers.parse('"{brand}" card is shown as result'))
 def verify_brand(paybright, brand):
-    expected_card = paybright.get_result_card()
+    expected_card = paybright.get_result_card(brand)
     paybright.move_to_given_element(expected_card)
     assert expected_card.is_displayed()
