@@ -37,3 +37,9 @@ class BasePage:
     def move_to_given_element(self, element):
         action = ActionChains(self.driver)
         action.move_to_element(element).perform()
+
+    def wait_until_loaded(self):
+        self.wait.until(lambda d: d.execute_script("return document.readyState") == "complete")
+
+    def wait_until_url_contains(self, contained):
+        self.wait.until(expected_conditions.url_contains(contained))

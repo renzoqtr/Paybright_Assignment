@@ -1,8 +1,7 @@
 import pytest
-from pytest_bdd import scenarios, given, when, then, parsers
-
 from pages.GoogleCAPage import GoogleCAPage
 from pages.PayBrightPage import PayBrightPage
+from pytest_bdd import scenarios, given, when, then, parsers
 from test.features.step_defs.driver_conf import init_driver
 
 scenarios('../paybright_shop.feature')
@@ -49,6 +48,8 @@ def navigate_to_result(web_driver, google_search_result, url):
 @when('user go to shop')
 def paybright_go_to_shop(paybright):
     # paybright.click_on_shop_link()
+    # wait_until_url_contains(self, contained):
+    # paybright.wait_until_loaded()
     pass
 
 

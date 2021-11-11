@@ -10,3 +10,6 @@ for running
 
 with report
 > python -m pytest -junitxml=/path/for/output/report_name
+
+removing cache 
+>clear ; find .-name '__pycache__'-type d -exec rm -rf {} \ ; python -m pytest
